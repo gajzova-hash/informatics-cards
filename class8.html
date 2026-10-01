@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"><title>8 Класс — Памятки</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; margin: 0; padding: 0; color: #333; }
+        .nav { background: #2c3e50; padding: 15px; display: flex; justify-content: center; gap: 15px; }
+        .nav a { color: #fff; text-decoration: none; font-weight: bold; padding: 8px 16px; border-radius: 4px; }
+        .nav a:hover { background: #34495e; }
+        .nav a.active { background: #4CAF50; }
+        h1 { text-align: center; color: #2c3e50; margin-top: 25px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; max-width: 1400px; margin: 25px auto; padding: 0 20px; }
+        .card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column; border-top: 5px solid #4CAF50; }
+        .badge { align-self: flex-start; padding: 4px 10px; font-size: 10px; font-weight: bold; border-radius: 20px; margin-bottom: 12px; color: #fff; background: #4CAF50; text-transform: uppercase; }
+        h3 { margin: 0 0 10px 0; font-size: 16px; color: #2c3e50; border-bottom: 1px dashed #eee; padding-bottom: 5px; }
+        p { margin: 0 0 8px 0; font-size: 14px; line-height: 1.4; }
+        .ico { margin-top: auto; text-align: right; font-size: 24px; opacity: 0.8; }
+    </style>
+</head>
+<body>
+        <div class="nav">
+        <a href="index.html">🏠 Главная</a>
+        <a href="class6.html">🐢 6 Класс</a>
+        <a href="class7.html">📘 7 Класс</a>
+        <a href="class8.html"class="active">📗 8 Класс</a>
+        <a href="class9.html">🟧 9 Класс</a>
+        <a href="class10.html">🟥 10 Класс (ЕГЭ)</a>
+        <a href="class11.html">🟣 11 Класс (ЕГЭ)</a>
+    </div>
+
+    <h1>📗 Памятки для 8 класса</h1>
+    <div class="grid">
+        <div class="card"><div class="badge">Памятка №1</div><h3>Системы счисления</h3><p>• <b>Непозиционные:</b> значение цифры не зависит от места (римские XXX = 30).</p><p>• <b>Позиционные:</b> значение цифры зависит от позиции (разряда) в числе.</p><p>• Основание (q) — количество цифр в алфавите системы.</p><div class="ico">🔢</div></div>
+        <div class="card"><div class="badge">Памятка №2</div><h3>Компьютерные СС</h3><p>• Двоичная (основание 2): цифры 0, 1</p><p>• Восьмеричная (основание 8): цифры 0 - 7</p><p>• Десятичная (основание 10): цифры 0 - 9</p><p>• Шестнадцатеричная (16): цифры 0-9 и буквы A(10)-F(15).</p><div class="ico">💻</div></div>
+        <div class="card"><div class="badge">Памятка №3</div><h3>Перевод в десятичную СС</h3><p>• Записать число в развернутой форме. Пронумеровать разряды справа налево с нуля.</p><p>• Умножить цифры на основание в степени разряда:</p><p><code>1011₂ = 1*2³ + 0*2² + 1*2¹ + 1*2⁰ = 11₁₀</code></p><div class="ico">🔀</div></div>
+        <div class="card"><div class="badge">Памятка №4</div><h3>Перевод ИЗ десятичной СС</h3><p>• Последовательно делить число на основание q нацело до тех пор, пока частное не станет равным 0.</p><p>• Выписать полученные остатки в обратном порядке (снизу вверх).</p><div class="ico">↩️</div></div>
+        <div class="card"><div class="badge">Памятка №5</div><h3>Операторы ввода, вывода и присваивания</h3><p>• <b>Присваивание (=):</b> вычисляет правую часть и кладет в переменную слева (<code>x = x + 1</code>).</p><p>• <b>Вывод (print()):</b> выводит данные. Опции: <code>sep='-'</code> (разделитель) и <code>end=' '</code> (без перехода строки).</p><p>• <b>Ввод (input()):</b> всегда читает текст (str)! Для чисел обернуть: <code>int(input())</code> или <code>float(input())</code>.</p><div class="ico">⚙️</div></div>
+        <div class="card"><div class="badge">Памятка №6</div><h3>Логические операции</h3><p>• <b>Конъюнкция (И, &and;):</b> истинна только если оба высказывания истинны. Обозначение: &amp;, AND.</p><p>• <b>Дизъюнкция (ИЛИ, &or;):</b> ложна только если оба ложны. Обозначение: +, OR.</p><p>• <b>Инверсия (НЕ, &not;):</b> меняет значение на противоположное.</p><div class="ico">⚖️</div></div>
+        <div class="card"><div class="badge">Памятка №7</div><h3>Таблицы истинности</h3><p>• 0,0 &rarr; НЕ А=1, И=0, ИЛИ=0 | 0,1 &rarr; НЕ А=1, И=0, ИЛИ=1</p><p>• 1,0 &rarr; НЕ А=0, И=0, ИЛИ=1 | 1,1 &rarr; НЕ А=0, И=1, ИЛИ=1</p><p>• Конъюнкция строгая (И), Дизъюнкция мягкая (ИЛИ).</p><div class="ico">📊</div></div>
+        <div class="card"><div class="badge">Памятка №8</div><h3>Понятие алгоритма</h3><p>• Точное описание последовательности шагов для решения задачи.</p><p>• Свойства: <b>Дискретность</b>, <b>Детерминированность</b>, <b>Понятность</b>, <b>Конечность</b>, <b>Массовость</b>.</p><div class="ico">📋</div></div>
+        <div class="card"><div class="badge">Памятка №9</div><h3>Structures алгоритмов</h3><p>• <b>Линейная:</b> команды выполняются строго последовательно друг за другом один раз.</p><p>• <b>Ветвление:</b> выполнение идет по одной из веток в зависимости от условия (Если-То-Иначе).</p><p>• <b>Цикл:</b> многократное повторение блока команд.</p><div class="ico">🔄</div></div>
+        <div class="card"><div class="badge">Памятка №10</div><h3>Блок-схемы</h3><p>• Овал: Начало / Конец. | Параллелограмм: Ввод / Вывод.</p><p>• Прямоугольник: Process (вычисления). | Ромб: Условие (Да / Нет).</p><div class="ico">🌿</div></div>
+        <div class="card"><div class="badge">Памятка №11</div><h3>Типы данных Python</h3><p>• <code>int</code> — целые числа (5) | <code>float</code> — дробные (3.14)</p><p>• <code>str</code> — текст в кавычках ("Привет") | <code>bool</code> — логика (True/False)</p><div class="ico">🗂️</div></div>
+    </div>
+</body>
+</html>

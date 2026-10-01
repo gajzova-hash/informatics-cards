@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"><title>7 Класс — Памятки</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; margin: 0; padding: 0; color: #333; }
+        .nav { background: #2c3e50; padding: 15px; display: flex; justify-content: center; gap: 15px; }
+        .nav a { color: #fff; text-decoration: none; font-weight: bold; padding: 8px 16px; border-radius: 4px; }
+        .nav a:hover { background: #34495e; }
+        .nav a.active { background: #2196F3; }
+        h1 { text-align: center; color: #2c3e50; margin-top: 25px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; max-width: 1400px; margin: 25px auto; padding: 0 20px; }
+        .card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column; border-top: 5px solid #2196F3; }
+        .badge { align-self: flex-start; padding: 4px 10px; font-size: 10px; font-weight: bold; border-radius: 20px; margin-bottom: 12px; color: #fff; background: #2196F3; text-transform: uppercase; }
+        h3 { margin: 0 0 10px 0; font-size: 16px; color: #2c3e50; border-bottom: 1px dashed #eee; padding-bottom: 5px; }
+        p { margin: 0 0 8px 0; font-size: 14px; line-height: 1.4; }
+        .ico { margin-top: auto; text-align: right; font-size: 24px; opacity: 0.8; }
+    </style>
+</head>
+<body>
+        <div class="nav">
+        <a href="index.html">🏠 Главная</a>
+        <a href="class6.html">🐢 6 Класс</a>
+        <a href="class7.html"class="active">📘 7 Класс</a>
+        <a href="class8.html">📗 8 Класс</a>
+        <a href="class9.html">🟧 9 Класс</a>
+        <a href="class10.html">🟥 10 Класс (ЕГЭ)</a>
+        <a href="class11.html">🟣 11 Класс (ЕГЭ)</a>
+    </div>
+
+    <h1>📘 Памятки для 7 класса</h1>
+    <div class="grid">
+        <div class="card"><div class="badge">Памятка №1</div><h3>Единицы измерения</h3><p>• Бит — наименьшая единица (0 или 1).</p><p>• <b>1 байт = 8 бит</b></p><p>• 1 Кбайт = 1024 байт (2¹⁰)</p><p>• 1 Мбайт = 1024 Кбайт (2²⁰)</p><p>• 1 Гбайт = 1024 Мбайт (2³⁰)</p><p>• <i>Правило:</i> из мелких в крупные — делим на 1024, обратно — умножаем.</p><div class="ico">💾</div></div>
+        <div class="card"><div class="badge">Памятка №2</div><h3>Формула Хартли</h3><p>• <b>N = 2<sup>i</sup></b> — N мощность алфавита (кол-во символов), i — вес одного символа в битах.</p><p>• <b>I = K * i</b> — объем сообщения, где K — общее количество символов в тексте.</p><div class="ico">🧮</div></div>
+        <div class="card"><div class="badge">Памятка №3</div><h3>Архитектура ПК</h3><p>• <b>Магистрально-модульный принцип:</b> все компоненты ПК взаимодействуют через общую шину.</p><p>• <b>ОЗУ:</b> временная, быстрая, энергозависимая память.</p><p>• <b>ПЗУ:</b> постоянная, энергонезависимая (хранит BIOS).</p><p>• <b>Процессор (ЦП):</b> обработка данных, состоит из АЛУ и УУ.</p><div class="ico">🖥️</div></div>
+        <div class="card"><div class="badge">Памятка №4</div><h3>Файловая система</h3><p>• <b>Файл:</b> область памяти с уникальным именем.</p><p>• <b>Имя файла:</b> Собственное имя + Расширение (.txt, .docx, .jpg).</p><p>• <b>Полный путь:</b> диск, папки и имя файла с расширением. Пример: <code>C:\School\p.txt</code></p><div class="ico">📁</div></div>
+        <div class="card"><div class="badge">Памятка №5</div><h3>Модель RGB</h3><p>• Формирует цвет смешиванием каналов: Red (Красный), Green (Зеленый), Blue (Синий).</p><p>• Каждая компонента кодируется 1 байтом (8 бит), значения от 0 до 255.</p><p>• Глубина цвета: 24 бита на пиксель дают более 16 млн цветов.</p><div class="ico">🎨</div></div>
+        <div class="card"><div class="badge">Памятка №6</div><h3>Текстовые документы</h3><p>• Редактор (Блокнот) — для простого текста без оформления.</p><p>• Процессор (Word) — для сложных документов с форматированием.</p><p>• Шрифты: гарнитура, кегль (размер), начертание, цвет.</p><p>• Абзац: выравнивание, отступы, межстрочный интервал.</p><div class="ico">📝</div></div>
+        <div class="card"><div class="badge">Памятка №7</div><h3>Растровая и векторная графика</h3><p>• <b>Растр:</b> сетка пикселей. Идеал для фото. Теряет качество при масштабировании (.jpg, .png).</p><p>• <b>Вектор:</b> геометрические объекты (формулы). Масштабируется бесконечно без потери качества (.svg).</p><div class="ico">📐</div></div>
+        <div class="card"><div class="badge">Памятка №8</div><h3>Кодирование звука</h3><p>• Звук дискретизируется (превращается в цифровой код).</p><p>• <b>I = H * i * t * k</b></p><p>• H — частота (Гц), i — разрядность (бит), t — время (сек), k — каналы (моно/стерео).</p><div class="ico">🎵</div></div>
+        <div class="card"><div class="badge">Памятка №9</div><h3>Компьютерные сети</h3><p>• <b>Локальная (LAN):</b> в пределах одного здания, кабинета.</p><p>• <b>Глобальная (WAN / Интернет):</b> по всему миру.</p><p>• <b>Сервер:</b> мощный ПК, предоставляющий свои ресурсы.</p><p>• <b>Клиент:</b> ПК пользователя, запрашивающий ресурсы.</p><p>• <b>Браузер:</b> программа для просмотра веб-страниц.</p><div class="ico">🌐</div></div>
+        <div class="card"><div class="badge">Памятка №10</div><h3>Безопасность в сети</h3><p>• Почта: имя_пользователя@имя_сервера.</p><p>• Не открывать вложения в письмах от незнакомцев.</p><p>• Сложные пароли = буквы разного регистра + цифры + знаки.</p><p>• <b>Фишинг:</b> кража паролей через поддельные сайты.</p><div class="ico">🛡️</div></div>
+    </div>
+</body>
+</html>

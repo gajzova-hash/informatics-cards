@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"><title>10 Класс — Памятки ЕГЭ</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; margin: 0; padding: 0; color: #333; }
+        .nav { background: #2c3e50; padding: 15px; display: flex; justify-content: center; gap: 15px; }
+        .nav a { color: #fff; text-decoration: none; font-weight: bold; padding: 8px 16px; border-radius: 4px; }
+        .nav a:hover { background: #34495e; }
+        .nav a.active { background: #E91E63; }
+        h1 { text-align: center; color: #2c3e50; margin-top: 25px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 20px; max-width: 1400px; margin: 25px auto; padding: 0 20px; }
+        .card { background: #fff; border-radius: 12px; padding: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column; border-top: 5px solid #E91E63; }
+        .badge { align-self: flex-start; padding: 4px 10px; font-size: 10px; font-weight: bold; border-radius: 20px; margin-bottom: 12px; color: #fff; background: #E91E63; text-transform: uppercase; }
+        h3 { margin: 0 0 10px 0; font-size: 16px; color: #2c3e50; border-bottom: 1px dashed #eee; padding-bottom: 5px; }
+        p { margin: 0 0 8px 0; font-size: 14px; line-height: 1.4; }
+        pre { background: #272822; color: #f8f8f2; padding: 10px; border-radius: 6px; font-family: monospace; font-size: 12px; overflow-x: auto; margin: 8px 0; white-space: pre; }
+        .ico { margin-top: auto; text-align: right; font-size: 24px; opacity: 0.8; }
+    </style>
+</head>
+<body>
+        <div class="nav">
+        <a href="index.html">🏠 Главная</a>
+        <a href="class6.html">🐢 6 Класс</a>
+        <a href="class7.html">📘 7 Класс</a>
+        <a href="class8.html">📗 8 Класс</a>
+        <a href="class9.html">🟧 9 Класс</a>
+        <a href="class10.html"class="active">🟥 10 Класс (ЕГЭ)</a>
+        <a href="class11.html">🟣 11 Класс (ЕГЭ)</a>
+    </div>
+
+    <h1>🟥 Памятки для 10 класса (Подготовка к ЕГЭ)</h1>
+    <div class="grid">
+        <div class="card"><div class="badge">Памятка №1</div><h3>Файлы (ЕГЭ 17, 24)</h3><pre># Строка (Задание 24):
+s = open('24.txt').readline()
+
+# Числа построчно (Задание 17):
+a = [int(x) for x in open('17.txt')]</pre><p>Менеджер закроет сам: <code>with open('17.txt') as f:</code></p><div class="ico">📂</div></div>
+        <div class="card"><div class="badge">Памятка №2</div><h3>Множества (set)</h3><p>• Хранит только <b>уникальные элементы</b> (без дубликатов).</p><p>• <code>my_set = set()</code> — создание, <code>my_set.add(x)</code> — добавление.</p><p>• Поиск <code>if x in my_set:</code> работает в памяти мгновенно.</p><p>• <i>ЕГЭ:</i> подсчет уникальных символов, сумм пар.</p><div class="ico">💎</div></div>
+        <div class="card"><div class="badge">Памятка №3</div><h3>Словари (dict)</h3><p>• Структура «Ключ : Значение». Создание: <code>d = {}</code></p><p>• Запись: <code>d['A'] = 1</code> | Безопасное чтение: <code>d.get(key, 0)</code>.</p><p>• <i>ЕГЭ:</i> частотный анализ букв в файле.</p><div class="ico">📖</div></div>
+        <div class="card"><div class="badge">Памятка №4</div><h3>Сортировка данных</h3><p>• <code>a.sort()</code> — сортирует исходный список на месте.</p><p>• <code>b = sorted(a)</code> — возвращает новый список.</p><p>• По убыванию: <code>reverse=True</code>.</p><p>• Сложная по лямбде: <code>a.sort(key=lambda x: (x, -x))</code>.</p><div class="ico">📊</div></div>
+        <div class="card"><div class="badge">Памятка №5</div><h3>SS на ЕГЭ (Задание 14)</h3><pre># Из любой СС в 10-ичную:
+print(int('A1', 16)) # 161
+
+# 10 в 5-ричную СС:
+n = 125
+res = ''
+while n > 0:
+    res = str(n % 5) + res
+    n //= 5</pre><div class="ico">🔀</div></div>
+        <div class="card"><div class="badge">Памятка №6</div><h3>itertools (Задание 8)</h3><pre>from itertools import *
+# Слова с повторениями букв:
+for p in product('АБВ', repeat=4):
+    w = ''.join(p)
+
+# Перестановки без повторений:
+for p in permutations('КРОТ'):
+    w = ''.join(p)</pre><div class="ico">🎲</div></div>
+        <div class="card"><div class="badge">Памятка №7</div><h3>Делители за SQRT(N)</h3><pre>import math
+n = 200000
+divs = set()
+for d in range(1, int(math.sqrt(n)) + 1):
+    if n % d == 0:
+        divs.add(d)
+        divs.add(n // d)</pre><p>• <i>ЕГЭ 25:</i> Оптимальный перебор до корня.</p><div class="ico">🧮</div></div>
+        <div class="card"><div class="badge">Памятка №8</div><h3>Срезы для ЕГЭ</h3><p>• Проверка строки/списка на палиндром: <code>if s == s[::-1]:</code></p><p>• Извлечь элементы на четных позициях: <code>a[::2]</code>.</p><p>• Мгновенно отсекает лишние куски строк при поиске подстрок в Задании 24.</p><div class="ico">✂️</div></div>
+        <div class="card"><div class="badge">Памятка №9</div><h3>Длинная арифметика</h3><p>• Python автоматически поддерживает длинную арифметику на уровне ядра.</p><p>• Выражения типа <code>3**2000 + 5**300</code> считаются абсолютно точно.</p><p>• Подсчет цифр в числе через строку: <code>str(выражение).count('9')</code>.</p><div class="ico">♾️</div></div>
+        <div class="card"><div class="badge">Памятка №10</div><h3>Списочные выражения</h3><pre># Данные из файла одной строкой с фильтром:
+nums = [int(x) for x in open('17.txt') if int(x) % 2 == 0]
+
+# Матрица 10х10 из нулей:
+matrix = [[0]*10 for _ in range(10)]</pre><div class="ico">⚡</div></div>
+    </div>
+</body>
+</html>

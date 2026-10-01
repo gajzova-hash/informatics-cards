@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Памятки по информатике 6-11 класс</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; margin: 0; padding: 0; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
+        .nav { background: #2c3e50; padding: 15px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .nav a { color: #fff; text-decoration: none; font-weight: bold; padding: 8px 14px; border-radius: 4px; transition: 0.2s; font-size: 14px; }
+        .nav a:hover { background: #34495e; }
+        .nav a.active { background: #3498db; }
+        .container { max-width: 1400px; width: 100%; box-sizing: border-box; margin: 30px auto; padding: 30px; background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); flex: 1; }
+        h1 { color: #2c3e50; margin-top: 0; text-align: left; }
+        .subtitle { font-size: 16px; line-height: 1.6; color: #666; text-align: left; margin-bottom: 25px; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 20px; margin: 35px 0; }
+        .menu-btn { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 150px; font-size: 24px; font-weight: bold; text-decoration: none; color: #fff; border-radius: 10px; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .menu-btn small { font-size: 14px; font-weight: normal; margin-top: 8px; opacity: 0.9; }
+        .menu-btn:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        .m6 { background: #009688; } .m7 { background: #2196F3; } .m8 { background: #4CAF50; } 
+        .m9 { background: #FF9800; } .m10 { background: #E91E63; } .m11 { background: #9C27B0; }
+        .quiz-section { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 10px; padding: 25px; margin-top: 40px; text-align: left; }
+        .quiz-section h2 { margin-top: 0; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .quiz-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 15px; margin-top: 20px; }
+        .q-block { background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #dee2e6; display: flex; flex-direction: column; justify-content: space-between; }
+        .q-title { font-weight: bold; font-size: 15px; margin-bottom: 10px; color: #34495e; }
+        .options { display: flex; flex-direction: column; gap: 8px; }
+        .options label { padding: 8px 12px; background: #f8f9fa; border: 1px solid #ced4da; border-radius: 5px; cursor: pointer; transition: 0.2s; font-size: 14px; }
+        .options label:hover { background: #e9ecef; }
+        .options input { margin-right: 10px; }
+        .quiz-btn-container { grid-column: 1 / -1; display: flex; gap: 10px; margin-top: 10px; }
+        .quiz-btn { background: #3498db; color: #fff; border: none; padding: 14px 30px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+        .quiz-btn:hover { background: #2980b9; }
+        .reset-btn { background: #6c757d; display: none; }
+        .reset-btn:hover { background: #5a6268; }
+        #quiz-result { grid-column: 1 / -1; margin-top: 15px; font-size: 18px; font-weight: bold; display: none; padding: 15px; border-radius: 6px; border: 1px solid #c3e6cb; }
+        .success { background: #d4edda; color: #155724; }
+        footer { background: #2c3e50; color: #bbb; padding: 15px; font-size: 14px; margin-top: 40px; }
+        footer b { color: #fff; }
+    </style>
+</head>
+<body>
+
+    <div class="nav">
+        <a href="index.html" class="active">🏠 Главная</a>
+        <a href="class6.html">🐢 6 Класс</a>
+        <a href="class7.html">📘 7 Класс</a>
+        <a href="class8.html">📗 8 Класс</a>
+        <a href="class9.html">🟧 9 Класс</a>
+        <a href="class10.html">🟥 10 Класс</a>
+        <a href="class11.html">🟣 11 Класс</a>
+    </div>
+
+    <div class="container">
+        <h1>📚 Интерактивные памятки по информатике</h1>
+        <div class="subtitle">Добро пожаловать в структурированный электронный справочник. Выберите нужный класс ниже, чтобы открыть просторные карточки-памятки:</div>
+        
+        <div class="menu-grid">
+            <a href="class6.html" class="menu-btn m6">🐢 6 Класс<small>20 карточек (Черепашка)</small></a>
+            <a href="class7.html" class="menu-btn m7">📘 7 Класс<small>10 карточек (База)</small></a>
+            <a href="class8.html" class="menu-btn m8">📗 8 Класс<small>11 карточек (Алгоритмы)</small></a>
+            <a href="class9.html" class="menu-btn m9">🟧 9 Класс<small>20 карточек (Python)</small></a>
+            <a href="class10.html" class="menu-btn m10">🟥 10 Класс<small>10 карточек (ЕГЭ база)</small></a>
+            <a href="class11.html" class="menu-btn m11">🟣 11 Класс<small>10 карточек (ЕГЭ профиль)</small></a>
+        </div>
+
+        <!-- КВИЗ -->
+        <div class="quiz-section">
+            <h2 id="quiz-theme">🧠 Проверка знаний. Тема №1: Единицы измерения и кодирование</h2>
+            <form id="quiz-form">
+                <div class="quiz-layout" id="quiz-questions-container">
+                    <!-- Вопросы выводятся скриптом -->
+                </div>
+                <div class="quiz-btn-container">
+                    <button type="button" id="submit-quiz-btn" class="quiz-btn" onclick="checkQuiz()">Проверить ответы</button>
+                    <button type="button" id="reset-quiz-btn" class="quiz-btn reset-btn" onclick="nextAttempt()">Пройти тест заново (Вторая тема)</button>
+                </div>
+                <div id="quiz-result"></div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        Разработчик справочника: <b>[Учитель Информатики]</b> | © 2026 Все права защищены.
+    </footer>
+
+    <script>
+        const quizData = {
+            1: {
+                theme: "🧠 Проверка знаний. Тема №1: Единицы измерения и кодирование",
+                nextBtnText: "Пройти тест заново (Тема №2: Алгоритмы и Python)",
+                questions: [
+                    { q: "1. Сколько бит содержится в 3 байтах?", options: ["1024 бит", "24 бита", "16 бит"], answer: 1 },
+                    { q: "2. Какой полный информационный объем сообщения из 10 символов при весе символа 8 бит?", options: ["80 бит", "10 байт", "Оба варианта верны"], answer: 2 },
+                    { q: "3. Какое расширение файла указывает на векторное изображение?", options: [".jpg", ".svg", ".png"], answer: 1 }
+                ]
+            },
+            2: {
+                theme: "🧠 Проверка знаний. Тема №2: Основы Python и алгоритмы",
+                nextBtnText: "Пройти тест заново (Тема №1: Кодирование)",
+                questions: [
+                    { q: "1. Какое значение вернет операция 7 // 3 в Python?", options: ["2", "1", "2.3333"], answer: 0 },
+                    { q: "2. Какой тип данных в Python отвечает за логические значения True/False?", options: ["int", "str", "bool"], answer: 2 },
+                    { q: "3. Какой элемент блок-схемы обозначает проверку логического условия?", options: ["Ромб", "Прямоугольник", "Параллелограмм"], answer: 0 }
+                ]
+            }
+        };
+
+        let currentAttempt = 1;
+
+        function renderQuiz(attempt) {
+            const container = document.getElementById('quiz-questions-container');
+            const themeTitle = document.getElementById('quiz-theme');
+            const data = quizData[attempt];
+            
+            themeTitle.innerText = data.theme;
+            container.innerHTML = ""; 
+
+            data.questions.forEach((item, qIndex) => {
+                let optionsHtml = "";
+                item.options.forEach((opt, oIndex) => {
+                    optionsHtml += `<label><input type="radio" name="q${qIndex}" value="${oIndex}"> ${opt}</label>`;
+                });
+
+                container.innerHTML += `
+                    <div class="q-block">
+                        <div class="q-title">${item.q}</div>
+                        <div class="options">${optionsHtml}</div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('quiz-result').style.display = 'none';
+            document.getElementById('submit-quiz-btn').style.display = 'block';
+            document.getElementById('reset-quiz-btn').style.display = 'none';
+        }
+
+        function checkQuiz() {
+            let score = 0;
+            const data = quizData[currentAttempt];
+            
+            data.questions.forEach((item, qIndex) => {
+                const selected = document.querySelector(`input[name="q${qIndex}"]:checked`);
+                if (selected && parseInt(selected.value) === item.answer) {
+                    score++;
+                }
+            });
+            
+            const resultBox = document.getElementById('quiz-result');
+            resultBox.style.display = 'block';
+            resultBox.className = "success";
+            resultBox.innerHTML = `Ваш результат по этой теме: ${score} из ${data.questions.length}. `;
+            
+            if(score === data.questions.length) {
+                resultBox.innerHTML += "Отлично! Тема усвоена на 100%! 🎉";
+            } else {
+                resultBox.innerHTML += "Повторите карточки класса, чтобы исправить ошибки. 👍";
+            }
+
+            document.getElementById('submit-quiz-btn').style.display = 'none';
+            const resetBtn = document.getElementById('reset-quiz-btn');
+            resetBtn.innerText = data.nextBtnText;
+            resetBtn.style.display = 'block';
+        }
+
+        function nextAttempt() {
+            currentAttempt = currentAttempt === 1 ? 2 : 1;
+            renderQuiz(currentAttempt);
+        }
+
+        renderQuiz(currentAttempt);
+    </script>
+<script>
+    // Проверяем, заходил ли уже ученик (чтобы не запрашивать пароль при каждом клике)
+    if (sessionStorage.getItem("auth") !== "true") {
+        let password = prompt("Введите школьный пароль для доступа к памяткам:");
+        
+        if (password === "School600Pass") { // Замените на свой секретный пароль
+            sessionStorage.setItem("auth", "true");
+            alert("Доступ разрешен! Приятной учебы.");
+        } else {
+            alert("Неверный пароль. Доступ заблокирован.");
+            document.body.innerHTML = "<h1 style='text-align:center; margin-top:100px; color:red;'>🔒 Доступ ограничен. Обратитесь к учителю информатики.</h1>";
+        }
+    }
+</script>
+
+</body>
+</html>

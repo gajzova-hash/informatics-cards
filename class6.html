@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>6 Класс — Черепашка Python</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; margin: 0; padding: 0; color: #333; }
+        .nav { background: #2c3e50; padding: 15px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .nav a { color: #fff; text-decoration: none; font-weight: bold; padding: 8px 16px; border-radius: 4px; transition: 0.2s; }
+        .nav a:hover { background: #34495e; }
+        .nav a.active { background: #009688; }
+        h1 { text-align: center; color: #2c3e50; margin-top: 25px; }
+        .grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); 
+    gap: 20px; 
+    max-width: 1400px; /* Сделали страницы шире, под стать главной */
+    width: 100%;
+    box-sizing: border-box;
+    margin: 25px auto; 
+    padding: 0 20px; 
+}
+
+        .card { background: #fff; border-radius: 12px; padding: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column; border-top: 5px solid #009688; transition: 0.3s; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .badge { align-self: flex-start; padding: 4px 10px; font-size: 10px; font-weight: bold; border-radius: 20px; margin-bottom: 12px; color: #fff; background: #009688; text-transform: uppercase; }
+        h3 { margin: 0 0 10px 0; font-size: 16px; color: #2c3e50; border-bottom: 1px dashed #eee; padding-bottom: 5px; }
+        p { margin: 0 0 8px 0; font-size: 14px; line-height: 1.4; }
+        pre { background: #272822; color: #f8f8f2; padding: 10px; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 12px; overflow-x: auto; margin: 8px 0; white-space: pre; }
+        .ico { margin-top: auto; text-align: right; font-size: 24px; opacity: 0.8; }
+        @media print { .nav { display: none; } body { background: #fff; } .card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; } }
+    </style>
+</head>
+<body>
+
+    <div class="nav">
+        <a href="index.html">🏠 Главная</a>
+        <a href="class6.html" class="active">🐢 6 Класс</a>
+        <a href="class7.html">📘 7 Класс</a>
+        <a href="class8.html">📗 8 Класс</a>
+        <a href="class9.html">🟧 9 Класс</a>
+        <a href="class10.html">🟥 10 Класс (ЕГЭ)</a>
+        <a href="class11.html">🟣 11 Класс (ЕГЭ)</a>
+    </div>
+
+    <h1>🐢 Памятки для 6 класса (Черепашка Python)</h1>
+
+    <div class="grid">
+        <!-- КАРТОЧКА 1 -->
+        <div class="card"><div class="badge">Памятка №1</div><h3>Подключение модуля</h3><p>Чтобы Черепашка появилась в программе, её нужно обязательно импортировать в первой строчке.</p><pre>import turtle</pre><div class="ico">🔌</div></div>
+
+        <!-- КАРТОЧКА 2 -->
+        <div class="card"><div class="badge">Памятка №2</div><h3>Движение вперед</h3><p>Команда перемещает Черепашку вперед на указанное количество шагов (пикселей).</p><pre>turtle.forward(100)
+# или коротко:
+turtle.fd(100)</pre><div class="ico">➡️</div></div>
+
+        <!-- КАРТОЧКА 3 -->
+        <div class="card"><div class="badge">Памятка №3</div><h3>Движение назад</h3><p>Перемещает Черепашку назад, хвостом вперед, не разворачивая её саму.</p><pre>turtle.backward(50)
+# или коротко:
+turtle.bk(50)</pre><div class="ico">⬅️</div></div>
+
+        <!-- КАРТОЧКА 4 -->
+        <div class="card"><div class="badge">Памятка №4</div><h3>Поворот направо</h3><p>Поворачивает Черепашку на месте по часовой стрелке на заданный угол в градусах.</p><pre>turtle.right(90)
+# или коротко:
+turtle.rt(90)</pre><div class="ico">↩️</div></div>
+
+        <!-- КАРТОЧКА 5 -->
+        <div class="card"><div class="badge">Памятка №5</div><h3>Поворот налево</h3><p>Поворачивает Черепашку против часовой стрелки на заданный угол в градусах.</p><pre>turtle.left(45)
+# или коротко:
+turtle.lt(45)</pre><div class="ico">↪️</div></div>
+
+        <!-- КАРТОЧКА 6 -->
+        <div class="card"><div class="badge">Памятка №6</div><h3>Поднять перо</h3><p>Черепашка перестает оставлять за собой линию при движении. Нужная команда для перемещения.</p><pre>turtle.up()
+# или:
+turtle.penup()</pre><div class="ico">🔼</div></div>
+
+        <!-- КАРТОЧКА 7 -->
+        <div class="card"><div class="badge">Памятка №7</div><h3>Опустить перо</h3><p>Черепашка снова начинает рисовать линии при любом перемещении (включено по умолчанию).</p><pre>turtle.down()
+# или:
+turtle.pendown()</pre><div class="ico">🔽</div></div>
+
+        <!-- КАРТОЧКА 8 -->
+        <div class="card"><div class="badge">Памятка №8</div><h3>Цвет линии</h3><p>Устанавливает цвет, которым Черепашка будет рисовать контур фигуры. Название пишется на английском.</p><pre>turtle.color("red")
+turtle.color("blue")
+turtle.color("green")</pre><div class="ico">🎨</div></div>
+
+        <!-- КАРТОЧКА 9 -->
+        <div class="card"><div class="badge">Памятка №9</div><h3>Толщина линии</h3><p>Устанавливает ширину рисуемой линии в пикселях (по умолчанию толщина равна 1).</p><pre>turtle.width(5)
+# или:
+turtle.pensize(5)</pre><div class="ico">✏️</div></div>
+
+        <!-- КАРТОЧКА 10 -->
+        <div class="card"><div class="badge">Памятка №10</div><h3>Скорость рисования</h3><p>Задает скорость анимации от 1 (самая медленная) до 10 (быстрая). Значение 0 отключает анимацию и рисует мгновенно.</p><pre>turtle.speed(1)  # Медленно
+turtle.speed(0)  # Мгновенно</pre><div class="ico">🚀</div></div>
+
+        <!-- КАРТОЧКА 11 -->
+        <div class="card"><div class="badge">Памятка №11</div><h3>Рисуем Квадрат</h3><p>Простой алгоритм рисования квадрата со стороной 100 пикселей cherez четыре поворота.</p><pre>for i in range(4):
+    turtle.fd(100)
+    turtle.rt(90)</pre><div class="ico">🟩</div></div>
+
+        <!-- КАРТОЧКА 12 -->
+        <div class="card"><div class="badge">Памятка №12</div><h3>Рисуем Треугольник</h3><p>Для правильного треугольника угол поворота равен внешнему углу фигуры: 120 градусов (180 - 60).</p><pre>for i in range(3):
+    turtle.fd(100)
+    turtle.lt(120)</pre><div class="ico">🔺</div></div>
+
+        <!-- КАРТОЧКА 13 -->
+        <div class="card"><div class="badge">Памятка №13</div><h3>Рисуем Окружность</h3><p>Встроенная команда для рисования круга или окружности с указанным радиусом.</p><pre>turtle.circle(50) 
+# 50 - это радиус круга</pre><div class="ico">⭕</div></div>
+
+        <!-- КАРТОЧКА 14 -->
+        <div class="card"><div class="badge">Памятка №14</div><h3>Заливка фигуры цветом</h3><p>Команды открывают и закрывают блок заливки. Все, что нарисовано внутри блока, закрасится.</p><pre>turtle.fillcolor("yellow")
+turtle.begin_fill()
+# (Код рисунка квадрата/круга)
+turtle.end_fill()</pre><div class="ico">🖌️</div></div>
+
+        <!-- КАРТОЧКА 15 -->
+        <div class="card"><div class="badge">Памятка №15</div><h3>Прыжок в координаты</h3><p>Мгновенно перемещает Черепашку в точку (X, Y) на экране. Центр экрана — это (0, 0).</p><pre>turtle.up()      # Чтобы не чертить
+turtle.goto(100, -50)
+turtle.down()</pre><div class="ico">📍</div></div>
+
+        <!-- КАРТОЧКА 16 -->
+        <div class="card"><div class="badge">Памятка №16</div><h3>Спрятать Черепашку</h3><p>Убирает изображение стрелочки/черепашки с экрана, чтобы она не закрывала готовый рисунок.</p><pre>turtle.hideturtle()
+# или коротко:
+turtle.ht()</pre><div class="ico">👻</div></div>
+
+        <!-- КАРТОЧКА 17 -->
+        <div class="card"><div class="badge">Памятка №17</div><h3>Форма исполнителя</h3><p>Меняет стандартную стрелочку на классический вид настоящей ползущей черепахи.</p><pre>turtle.shape("turtle")</pre><div class="ico">🐢</div></div>
+
+        <!-- КАРТОЧКА 18 -->
+        <div class="card"><div class="badge">Памятка №18</div><h3>Очистка экрана</h3><p>Удаляет все рисунки с экрана и возвращает Черепашку в стартовую точку (0, 0).</p><pre>turtle.clear()</pre><div class="ico">🧼</div></div>
+
+        <!-- КАРТОЧКА 19 -->
+        <div class="card"><div class="badge">Памятка №19</div><h3>Цвет фона холста</h3><p>Красит всё окно (экран), на котором рисует исполнитель, в выбранный цвет.</p><pre>turtle.bgcolor("black")</pre><div class="ico">🖼️</div></div>
+
+        <!-- КАРТОЧКА 20 -->
+        <div class="card"><div class="badge">Памятка №20</div><h3>Защита от закрытия окна</h3><p>Помещается в самый конец программы, чтобы окно с готовым рисунком не закрывалось само по себе.</p><pre>turtle.done()</pre><div class="ico">🚪</div></div>
+    </div>
+</body>
+</html>

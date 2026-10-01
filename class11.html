@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>11 Класс — Памятки ЕГЭ</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; margin: 0; padding: 0; color: #333; }
+        .nav { background: #2c3e50; padding: 15px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .nav a { color: #fff; text-decoration: none; font-weight: bold; padding: 8px 16px; border-radius: 4px; transition: 0.2s; }
+        .nav a:hover { background: #34495e; }
+        .nav a.active { background: #9C27B0; }
+        h1 { text-align: center; color: #2c3e50; margin-top: 25px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; max-width: 1400px; margin: 25px auto; padding: 0 20px; }
+        .card { background: #fff; border-radius: 12px; padding: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column; border-top: 5px solid #9C27B0; transition: 0.3s; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .badge { align-self: flex-start; padding: 4px 10px; font-size: 10px; font-weight: bold; border-radius: 20px; margin-bottom: 12px; color: #fff; background: #9C27B0; text-transform: uppercase; }
+        h3 { margin: 0 0 10px 0; font-size: 16px; color: #2c3e50; border-bottom: 1px dashed #eee; padding-bottom: 5px; }
+        p { margin: 0 0 8px 0; font-size: 14px; line-height: 1.4; }
+        pre { background: #272822; color: #f8f8f2; padding: 10px; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 12px; overflow-x: auto; margin: 8px 0; white-space: pre; }
+        .ico { margin-top: auto; text-align: right; font-size: 24px; opacity: 0.8; }
+        @media print { .nav { display: none; } body { background: #fff; } .card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; } }
+    </style>
+</head>
+<body>
+
+        <div class="nav">
+        <a href="index.html">🏠 Главная</a>
+        <a href="class6.html">🐢 6 Класс</a>
+        <a href="class7.html">📘 7 Класс</a>
+        <a href="class8.html">📗 8 Класс</a>
+        <a href="class9.html">🟧 9 Класс</a>
+        <a href="class10.html">🟥 10 Класс (ЕГЭ)</a>
+        <a href="class11.html" class="active">🟣 11 Класс (ЕГЭ)</a>
+    </div>
+
+
+    <h1>🟣 Памятки для 11 класса (Профильный ЕГЭ)</h1>
+
+    <div class="grid">
+        <!-- КАРТОЧКА 1 -->
+        <div class="card">
+            <div class="badge">Памятка №1</div>
+            <h3>Динамическое программирование (Задание 16)</h3>
+            <p>Для ускорения рекурсии (чтобы избежать RecursionError и зависаний) используйте кэширование.</p>
+            <pre>from functools import lru_cache
+import sys
+
+# Снимаем лимит на глубину рекурсии
+sys.setrecursionlimit(10000)
+
+@lru_cache(None)
+def f(n):
+    if n <= 1: return 1
+    if n % 2 == 0: return n + f(n - 1)
+    return 2 * f(n - 2)</pre>
+            <div class="ico">⚡</div>
+        </div>
+
+        <!-- КАРТОЧКА 2 -->
+        <div class="card">
+            <div class="badge">Памятка №2</div>
+            <h3>Теория игр: Одна куча (Задание 19-21)</h3>
+            <p>Универсальный шаблон для анализа ходов Пети и Вани с помощью рекурсивной функции.</p>
+            <pre>def game(s, m):
+    # s - камни, m - доступные ходы
+    if s >= 50: return m % 2 == 0
+    if m == 0: return False
+    
+    # Список возможных ходов из кучи s
+    moves = [game(s + 1, m - 1), 
+             game(s * 2, m - 1)]
+             
+    # Четный шаг - наш ход, нечетный - соперника
+    if (m - 1) % 2 == 0:
+        return any(moves) # Ищем выигрышный ход
+    return all(moves) # Проверяем все ходы</pre>
+            <div class="ico">🎮</div>
+        </div>
+
+        <!-- КАРТОЧКА 3 -->
+        <div class="card">
+            <div class="badge">Памятка №3</div>
+            <h3>Теория игр: Две кучи (Задание 19-21)</h3>
+            <p>Модификация шаблона под стратегию игры, когда на столе находятся сразу две кучи камней.</p>
+            <pre>def game(x, y, m):
+    if x + y >= 77: return m % 2 == 0
+    if m == 0: return False
+    
+    moves = [game(x + 1, y, m - 1),
+             game(x * 2, y, m - 1),
+             game(x, y + 1, m - 1),
+             game(x, y * 3, m - 1)]
+             
+    if (m - 1) % 2 == 0:
+        return any(moves)
+    return all(moves)</pre>
+            <div class="ico">🎲</div>
+        </div>
+
+        <!-- КАРТОЧКА 4 -->
+        <div class="card">
+            <div class="badge">Памятка №4</div>
+            <h3>Поиск путей в графах (Задание 13/23)</h3>
+            <p>Алгоритм подсчета количества путей из стартовой вершины `A` в конечную вершину `B` по правилам команд.</p>
+            <pre>def count_ways(current, target):
+    if current > target: return 0
+    if current == target: return 1
+    
+    # Пример команд исполнителя: +1, +2, *2
+    return (count_ways(current + 1, target) + 
+            count_ways(current + 2, target) + 
+            count_ways(current * 2, target))</pre>
+            <p>• Обязательные точки перегиба считаем как: <code>ways(A, C) * ways(C, B)</code></p>
+            <div class="ico">🌿</div>
+        </div>
+
+        <!-- КАРТОЧКА 5 -->
+        <div class="card">
+            <div class="badge">Памятка №5</div>
+            <h3>Сложный текстовый анализ (Задание 24)</h3>
+            <p>Поиск максимальной длины цепочки символов без циклов при помощи метода `.replace()`.</p>
+            <pre>s = open('24.txt').readline()
+
+# Заменяем запрещенные комбинации (напр., AB) на пробел
+s = s.replace('AB', ' ')
+
+# Разбиваем строку по пробелам и ищем максимум
+lines = s.split()
+print(max(len(sub) for sub in lines))</pre>
+            <div class="ico">🔍</div>
+        </div>
+
+        <!-- КАРТОЧКА 6 -->
+        <div class="card">
+            <div class="badge">Памятка №6</div>
+            <h3>Генерация масок файлов (Задание 25)</h3>
+            <p>Использование встроенной стандартной библиотеки `fnmatch` для фильтрации чисел по маске.</p>
+            <pre>from fnmatch import fnmatch
+
+# Маска: знак '?' - один символ, '*' - любое кол-во
+mask = '12?4*5'
+
+for x in range(0, 10**7, 21): # Шаг делителя
+    if fnmatch(str(x), mask):
+        print(x, x // 21)</pre>
+            <div class="ico">🧩</div>
+        </div>
+
+        <!-- КАРТОЧКА 7 -->
+        <div class="card">
+            <div class="badge">Памятка №7</div>
+            <h3>Перебор числовых диапазонов (Задание 17)</h3>
+            <p>Поиск пар элементов в списке, удовлетворяющих сложным логическим критериям.</p>
+            <pre>a = [int(x) for x in open('17.txt')]
+max_item = max(x for x in a if x % 100 == 13)
+ans = []
+
+for i in range(len(a) - 1):
+    # Проверка условий для пары a[i] и a[i+1]
+    if (a[i] % 2 == 0) != (a[i+1] % 2 == 0):
+        if (a[i] + a[i+1]) <= max_item:
+            ans.append(a[i] + a[i+1])
+
+print(len(ans), max(ans))</pre>
+            <div class="ico">🗄️</div>
+        </div>
+
+        <!-- КАРТОЧКА 8 -->
+        <div class="card">
+            <div class="badge">Памятка №8</div>
+            <h3>Решение уравнений перебором (Задание 15)</h3>
+            <p>Поиск конкретного параметра `A`, при котором сложное логическое поразрядное выражение тождественно истинно.</p>
+            <pre>for a in range(1, 1000):
+    flag = True
+    for x in range(1, 1000):
+        # Пример выражения: (x & a == 0) -> (x & 13 != 0)
+        f = (x & a == 0) <= ((x & 13 != 0) <= (x & 33 != 0))
+        if not f:
+            flag = False
+            break
+    if flag:
+        print(a) # Выведет все подходящие A
+        break</pre>
+            <div class="ico">⚖️</div>
+        </div>
+
+        <!-- КАРТОЧКА 9 -->
+        <div class="card">
+            <div class="badge">Памятка №9</div>
+            <h3>Эффективное чтение строк (Задание 26)</h3>
+            <p>Сортировка и последовательный жадный перебор контейнеров при обработке больших данных.</p>
+            <pre>f = open('26.txt')
+# Читаем общие параметры из первой строки
+capacity, n = map(int, f.readline().split())
+
+# Считываем оставшиеся данные и сортируем
+box = sorted([int(x) for x in f])
+total, count = 0, 0
+
+for x in box:
+    if total + x <= capacity:
+        total += x
+        count += 1
+print(count) # Количество вошедших грузов</pre>
+            <div class="ico">📊</div>
+        </div>
+
+        <!-- КАРТОЧКА 10 -->
+        <div class="card">
+            <div class="badge">Памятка №10</div>
+            <h3>Продвинутый генератор списков (Координаты)</h3>
+            <p>Быстрая генерация двумерной сетки точек для анализа геометрических фигур (Задание 6).</p>
+            <pre># Генерация пар координат (x, y) от -10 до 10
+points = [(x, y) for x in range(-10, 11) 
+                 for y in range(-10, 11)]
+
+# Пример фильтрации точек внутри круга R=5
+inside = [p for p in points if p[0]**2 + p[1]**2 <= 25]
+print(len(inside)) # Количество точек внутри</pre>
+            <div class="ico">⚡</div>
+        </div>
+    </div>
+
+</body>
+</html>

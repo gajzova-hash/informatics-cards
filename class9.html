@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"><title>9 Класс — Памятки</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; margin: 0; padding: 0; color: #333; }
+        .nav { background: #2c3e50; padding: 15px; display: flex; justify-content: center; gap: 15px; }
+        .nav a { color: #fff; text-decoration: none; font-weight: bold; padding: 8px 16px; border-radius: 4px; }
+        .nav a:hover { background: #34495e; }
+        .nav a.active { background: #FF9800; }
+        h1 { text-align: center; color: #2c3e50; margin-top: 25px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 20px; max-width: 1400px; margin: 25px auto; padding: 0 20px; }
+        .card { background: #fff; border-radius: 12px; padding: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column; border-top: 5px solid #FF9800; }
+        .badge { align-self: flex-start; padding: 4px 10px; font-size: 10px; font-weight: bold; border-radius: 20px; margin-bottom: 12px; color: #fff; background: #FF9800; text-transform: uppercase; }
+        h3 { margin: 0 0 10px 0; font-size: 16px; color: #2c3e50; border-bottom: 1px dashed #eee; padding-bottom: 5px; }
+        p { margin: 0 0 8px 0; font-size: 14px; line-height: 1.4; }
+        pre { background: #272822; color: #f8f8f2; padding: 10px; border-radius: 6px; font-family: monospace; font-size: 12px; overflow-x: auto; margin: 8px 0; white-space: pre; }
+        .ico { margin-top: auto; text-align: right; font-size: 24px; opacity: 0.8; }
+    </style>
+</head>
+<body>
+        <div class="nav">
+        <a href="index.html">🏠 Главная</a>
+        <a href="class6.html">🐢 6 Класс</a>
+        <a href="class7.html">📘 7 Класс</a>
+        <a href="class8.html">📗 8 Класс</a>
+        <a href="class9.html" class="active">🟧 9 Класс</a>
+        <a href="class10.html">🟥 10 Класс (ЕГЭ)</a>
+        <a href="class11.html">🟣 11 Класс (ЕГЭ)</a>
+    </div>
+
+    <h1>🟧 Памятки для 9 класса (Python)</h1>
+    <div class="grid">
+        <div class="card"><div class="badge">Памятка №1</div><h3>Ввод данных Python</h3><pre>s = input()  # Текст
+n = int(input())  # Целое
+x = float(input())  # Дробь</pre><p>Имя переменной: латиница, цифры (не первыми), знак `_`.</p><div class="ico">⌨️</div></div>
+        <div class="card"><div class="badge">Памятка №2</div><h3>Вывод данных (print)</h3><pre>print(x, y) # Через пробел
+print(a, b, sep='-') # Свой сепаратор
+print(x, end=' ') # Без новой строки
+print(f'Мне {age} лет') # F-строка</pre><div class="ico">📺</div></div>
+        <div class="card"><div class="badge">Памятка №3</div><h3>Арифметика Python</h3><p>• <code>/</code> — деление (результат всегда float, 4 / 2 == 2.0).</p><p>• <code>//</code> — деление нацело (округление вниз, 7 // 3 == 2).</p><p>• <code>%</code> — остаток от деления нацело (7 % 3 == 1).</p><p>• <code>**</code> — возведение в степень (2 ** 3 == 8).</p><div class="ico">➕</div></div>
+        <div class="card"><div class="badge">Памятка №4</div><h3>Сравнения и bool</h3><p>• Возвращают True или False.</p><p>• Операторы: &gt;, &lt;, &gt;=, &lt;=.</p><p>• <code>==</code> — проверка на равенство. <code>!=</code> — проверка на неравенство.</p><div class="ico">🔍</div></div>
+        <div class="card"><div class="badge">Памятка №5</div><h3>Ветвления (if-else)</h3><pre>if x > 0:
+    print('Плюс')
+elif x < 0:
+    print('Минус')
+else:
+    print('Ноль')</pre><p>ВАЖНО: После условий ставится `:`, отступы в 4 пробела!</p><div class="ico">🔱</div></div>
+        <div class="card"><div class="badge">Памятка №6</div><h3>Логические операторы</h3><p>• <code>and</code> (И) — истинно, если ВСЕ условия верны.</p><p>• <code>or</code> (ИЛИ) — истинно, если ХОТЯ БЫ ОДНО верно.</p><p>• <code>not</code> (НЕ) — инвертирует логику (if not flag:).</p><div class="ico">🛡️</div></div>
+        <div class="card"><div class="badge">Памятка №7</div><h3>Цикл while</h3><pre>i = 1
+while i <= 3:
+    print(i)
+    i += 1  # Изменение счетчика!</pre><p>Выполняется, пока условие истинно.</p><div class="ico">🔄</div></div>
+        <div class="card"><div class="badge">Памятка №8</div><h3>Цикл for и range()</h3><p>• <code>range(5)</code> &rarr; 0, 1, 2, 3, 4 | <code>range(1, 5)</code> &rarr; 1, 2, 3, 4</p><p>• <code>range(1, 10, 2)</code> &rarr; 1, 3, 5, 7, 9 (с шагом)</p><p>• Обратный ход: <code>range(5, 0, -1)</code> &rarr; от 5 до 1.</p><div class="ico">🔁</div></div>
+        <div class="card"><div class="badge">Памятка №9</div><h3>break и continue</h3><p>• <code>break</code> — немедленный полный выход из текущего цикла.</p><p>• <code>continue</code> — пропуск остатка кода тела цикла и переход к следующей итерации.</p><div class="ico">🛑</div></div>
+        <div class="card"><div class="badge">Памятка №10</div><h3>Списки (list)</h3><p>• Коллекция элементов. Создание: <code>arr =</code></p><p>• Индексы с 0: <code>arr</code> &rarr; 10. С конца: <code>arr[-1]</code> &rarr; 30.</p><p>• Несуществующий индекс вызовет IndexError.</p><div class="ico">📦</div></div>
+        <div class="card"><div class="badge">Памятка №11</div><h3>Методы списков</h3><p>• <code>arr.append(x)</code> — добавить x в конец.</p><p>• <code>arr.insert(i, x)</code> — вставить x на индекс i.</p><p>• <code>arr.pop()</code> — удалить и вернуть последний (или по индексу pop(i)).</p><p>• <code>len(arr) — количество элементов.</code></p><div class="ico">🛠️</div></div>
+        <div class="card"><div class="badge">Памятка №12</div><h3>Срезы (Slices)</h3><p>• Шаблон: <code>коллекция[start:stop:step]</code></p><p>• <code>arr[1:4]</code> — индексы от 1 до 3. <code>arr[:3] — от начала до 2.</code></p><p>• <code>arr[::-1] — разворот списка/строки задом наперед!</code></p><div class="ico">✂️</div></div>
+        <div class="card"><div class="badge">Памятка №13</div><h3>Перебор списка</h3><pre># Способ 1 (без индексов):
+for elem in arr:
+    print(elem)
+
+# Способ 2 (по индексам):
+for i in range(len(arr)):
+    print(arr[i])</pre><div class="ico">🚶</div></div>
+        <div class="card"><div class="badge">Памятка №14</div><h3>Строки (str)</h3><p>• Текст (неизменяемый тип).</p><p>• Конкатенация: <code>'Пит' + 'он'</code> &rarr; <code>'Питон'</code></p><p>• Дублирование: <code>'А' * 3</code> &rarr; <code>'AAA'</code></p><p>• Поиск подстроки: <code>if 'ит' in 'Питон':</code> (True)</p><p>• Длина текста: <code>len('Привет')</code> &rarr; 6.</p><div class="ico">🔤</div></div>
+        <div class="card"><div class="badge">Памятка №15</div><h3>Методы строк</h3><p>• <code>s.upper() / s.lower()</code> — перевод регистра.</p><p>• <code>s.count(sub)</code> — подсчет вхождений подстроки.</p><p>• <code>s.find(sub)</code> — индекс первой подстроки (или -1).</p><p>• <code>s.replace(old, new)</code> — замена текста.</p><div class="ico">🔠</div></div>
+        <div class="card"><div class="badge">Памятка №16</div><h3>split и join</h3><p>• <code>s.split()</code> — режет строку по пробелам в список строк.</p><p>• <code>sep.join(list)</code> — собирает список в строку через разделитель sep: <code>'-'.join(['А', 'Б'])</code> &rarr; <code>'А-Б'</code>.</p><div class="ico">🧩</div></div>
+        <div class="card"><div class="badge">Памятка №17</div><h3>Генераторы списков</h3><pre># Квадраты от 0 до 4:
+squares = [x**2 for x in range(5)]
+
+# Ввод числового списка в строку:
+arr = list(map(int, input().split()))</pre><div class="ico">⚡</div></div>
+        <div class="card"><div class="badge">Памятка №18</div><h3>Встроенные мат. функции</h3><p>• <code>abs(x)</code> — модуль | <code>round(x, 2)</code> — округление.</p><p>• <code>min(arr) / max(arr)</code> — поиск минимума/максимума в списке.</p><p>• <code>sum(arr)</code> — сумма всех элементов числового списка.</p><div class="ico">📐</div></div>
+        <div class="card"><div class="badge">Памятка №19</div><h3>Модуль math</h3><pre>import math
+print(math.sqrt(16)) # 4.0 (корень)
+print(math.ceil(3.1)) # 4 (вверх)
+print(math.floor(3.9)) # 3 (вниз)
+print(math.pi) # 3.14159...</pre><div class="ico">📐</div></div>
+        <div class="card"><div class="badge">Памятка №20</div><h3>Функции (def)</h3><pre>def greet(name):
+    return f'Привет, {name}!'
+
+message = greet('Анна')
+print(message) # Привет, Анна!</pre><div class="ico">📦</div></div>
+    </div>
+</body>
+</html>
