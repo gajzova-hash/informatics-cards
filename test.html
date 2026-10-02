@@ -126,7 +126,7 @@ document.getElementById('test-form').addEventListener('submit', function(e) {
     else if (correctCount >= 4) { grade = 4; gradeText = "Хорошо"; styleClass = "grade-4"; }
     else if (correctCount >= 3) { grade = 3; gradeText = "Удовлетворительно"; styleClass = "grade-3"; }
     const finalReport = { ...studentData, variant: currentVariant, answers: studentAnswers.join(', '), score: correctCount, grade: grade };
-    const googleScriptUrl = 'https://google.com';
+    const googleScriptUrl = 'https://script.google.com/macros/s/AKfycby2JN8CZ5QnUIreXYULSSQ6ETKda2fiUSSG4KUDedEO_OsjnqijDFdPRptYCVgegHoVpA/exec';
     fetch(googleScriptUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(finalReport) }).then(() => {
         document.getElementById('test-block').classList.add('hidden'); document.getElementById('result-block').classList.remove('hidden');
         document.getElementById('result-wrapper').innerHTML = `<div class="result-box ${styleClass}"><div style="font-size:18px; font-weight:bold; text-transform:uppercase; letter-spacing:1px;">Ваша оценка по ФГОС</div><div class="grade-val">«${grade}»</div><div style="font-size:22px; font-weight:bold; margin-bottom:15px;">${gradeText}</div><div style="font-size:16px; opacity:0.9;">Правильных ответов: <b>${correctCount} из 6</b></div></div><p style="text-align:center; color:#4b5563; font-size:14px; font-style:italic;">Результаты успешно сохранены в таблицу учителя.</p>`;
