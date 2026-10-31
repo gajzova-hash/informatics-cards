@@ -60,7 +60,7 @@
 </div>
 <script>
 const googleScriptUrl = "https://script.google.com/macros/s/AKfycbxzatSf2EwjFd_1NR3ISSqpWgduqMHXsP6JlZv5pX9LHPemdQuJWJDIDY7MTxrC1fHKlg/exec";
-    const variantsDB = {
+  const variantsDB = {
     1: { tasks:, answers: ["113","216","764","A","B","C"] },
     2: { tasks:, answers: ["123","303","1144","D","E","F"] },
     3: { tasks:, answers: ["100","325","665","1A","1B","1C"] },
@@ -90,6 +90,7 @@ const googleScriptUrl = "https://script.google.com/macros/s/AKfycbxzatSf2EwjFd_1
     27: { tasks:, answers: ["122","373","1625","B2","B3","B4"] },
     28: { tasks:, answers: ["103","241","667","B5","B6","B7"] }
 };
+
 let studentData = {}, currentVariant = 1;
 
 document.getElementById('auth-form').addEventListener('submit', function(e) {
