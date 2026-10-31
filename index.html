@@ -169,20 +169,7 @@
 
         renderQuiz(currentAttempt);
     </script>
-<script>
-    // Проверяем, заходил ли уже ученик (чтобы не запрашивать пароль при каждом клике)
-    if (sessionStorage.getItem("auth") !== "true") {
-        let password = prompt("Введите школьный пароль для доступа к памяткам:");
-        
-        if (password === "School600Pass") { // Замените на свой секретный пароль
-            sessionStorage.setItem("auth", "true");
-            alert("Доступ разрешен! Приятной учебы.");
-        } else {
-            alert("Неверный пароль. Доступ заблокирован.");
-            document.body.innerHTML = "<h1 style='text-align:center; margin-top:100px; color:red;'>🔒 Доступ ограничен. Обратитесь к учителю информатики.</h1>";
-        }
-    }
-</script>
+
 
 </body>
 </html>
