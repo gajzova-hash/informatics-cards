@@ -83,7 +83,10 @@
    <footer>Разработчик справочника: <b>Гаязова Э.В.</b> | © 2026 Все права защищены.</footer>
 
 
-    <script>
+       <script>
+        // СЮДА ВСТАВЬТЕ ВАШУ ССЫЛКУ ИЗ GOOGLE APPS SCRIPT (которая начинается на https://google.com...)
+        const googleScriptUrl = "ХХХ_ВАША_ССЫЛКА_ИЗ_GOOGLE_APPS_SCRIPT_ХХХ";
+
         const quizData = {
             1: {
                 theme: "🧠 Проверка знаний. Тема №1: Единицы измерения и кодирование",
@@ -107,6 +110,7 @@
 
         let currentAttempt = 1;
 
+        // Функция отрисовки квиза и добавления формы ученика
         function renderQuiz(attempt) {
             const container = document.getElementById('quiz-questions-container');
             const themeTitle = document.getElementById('quiz-theme');
@@ -114,6 +118,21 @@
             
             themeTitle.innerText = data.theme;
             container.innerHTML = ""; 
+
+            // Добавляем форму ввода личных данных в самое начало перед вопросами
+            container.innerHTML += `
+                <div class="q-block" style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 10px; padding: 20px; background: #eef2f7; border: 1px solid #b0c4de;">
+                    <span class="q-title" style="font-size: 16px; color: #2c3e50;">📋 Данные ученика (заполните перед отправкой):</span>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;">
+                        <input type="text" id="std-city" placeholder="Город / Населенный пункт" required style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        <input type="text" id="std-school" placeholder="Школа" required style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        <input type="text" id="std-classNum" placeholder="Класс (цифра, н-р: 8)" required style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        <input type="text" id="std-classLit" placeholder="Литера (буква, н-р: С)" required style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        <input type="text" id="std-lastname" placeholder="Фамилия" required style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        <input type="text" id="std-firstname" placeholder="Имя" required style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                    </div>
+                </div>
+            `;
 
             data.questions.forEach((item, qIndex) => {
                 let optionsHtml = "";
@@ -129,37 +148,103 @@
                 `;
             });
             
-            document.getElementById('quiz-result').style.display = 'none';
-            document.getElementById('submit-quiz-btn').style.display = 'block';
-            document.getElementById('reset-quiz-btn').style.display = 'none';
+            // Сбрасываем кнопки
+            document.getElementById('submit-quiz-btn').style.display = "inline-block";
+            document.getElementById('submit-quiz-btn').disabled = false;
+            document.getElementById('submit-quiz-btn').innerText = "Проверить ответы";
+            document.getElementById('reset-quiz-btn').style.display = "none";
+            document.getElementById('quiz-result').style.display = "none";
         }
 
+        // Проверка ответов и автоматическая отправка
         function checkQuiz() {
-            let score = 0;
             const data = quizData[currentAttempt];
-            
-            data.questions.forEach((item, qIndex) => {
-                const selected = document.querySelector(`input[name="q${qIndex}"]:checked`);
-                if (selected && parseInt(selected.value) === item.answer) {
-                    score++;
-                }
-            });
-            
-            const resultBox = document.getElementById('quiz-result');
-            resultBox.style.display = 'block';
-            resultBox.className = "success";
-            resultBox.innerHTML = `Ваш результат по этой теме: ${score} из ${data.questions.length}. `;
-            
-            if(score === data.questions.length) {
-                resultBox.innerHTML += "Отлично! Тема усвоена на 100%! 🎉";
-            } else {
-                resultBox.innerHTML += "Повторите карточки класса, чтобы исправить ошибки. 👍";
+            let score = 0;
+            let studentAnswers = [];
+            let allAnswered = true;
+
+            // 1. Проверяем заполнение личных данных
+            const city = document.getElementById('std-city').value.trim();
+            const school = document.getElementById('std-school').value.trim();
+            const classNum = document.getElementById('std-classNum').value.trim();
+            const classLit = document.getElementById('std-classLit').value.trim();
+            const lastname = document.getElementById('std-lastname').value.trim();
+            const firstname = document.getElementById('std-firstname').value.trim();
+
+            if (!city || !school || !classNum || !classLit || !lastname || !firstname) {
+                alert("Пожалуйста, заполните ВСЕ поля с личными данными перед проверкой!");
+                return;
             }
 
-            document.getElementById('submit-quiz-btn').style.display = 'none';
-            const resetBtn = document.getElementById('reset-quiz-btn');
-            resetBtn.innerText = data.nextBtnText;
-            resetBtn.style.display = 'block';
+            // 2. Собираем ответы на вопросы
+            data.questions.forEach((item, qIndex) => {
+                const selected = document.querySelector(`input[name="q${qIndex}"]:checked`);
+                if (!selected) {
+                    allAnswered = false;
+                } else {
+                    const ansIndex = parseInt(selected.value);
+                    studentAnswers.push(item.options[ansIndex]); // Сохраняем текст ответа
+                    if (ansIndex === item.answer) {
+                        score++;
+                    }
+                }
+            });
+
+            if (!allAnswered) {
+                alert("Ответьте на все вопросы теста!");
+                return;
+            }
+
+            // 3. Считаем школьную оценку (из 3 вопросов: 3 балла = '5', 2 балла = '4', 1 балл = '3', 0 = '2')
+            let grade = 2;
+            if (score === 3) grade = 5;
+            else if (score === 2) grade = 4;
+            else if (score === 1) grade = 3;
+
+            // Выводим результат ученику на экран
+            const resultBox = document.getElementById('quiz-result');
+            resultBox.className = "success";
+            resultBox.style.display = "block";
+            resultBox.innerHTML = `Вы ответили правильно на ${score} из 3 вопросов. Ваша оценка: <b>${grade}</b>.<br><span style="color: #666; font-size:14px;">Результаты отправляются учителю...</span>`;
+
+            // Блокируем кнопку проверки, чтобы не слали дубли
+            const btn = document.getElementById('submit-quiz-btn');
+            btn.disabled = true;
+            btn.innerText = "Отправка...";
+
+            // 4. Формируем JSON-пакет строго под переменные вашего Google Скрипта
+            const payload = {
+                city: city,
+                school: school,
+                classNum: classNum,
+                classLit: classLit,
+                lastname: lastname,
+                firstname: firstname,
+                variant: currentAttempt, // Номер попытки/темы пойдет в колонку Вариант
+                answers: studentAnswers.join(", "), // Склеиваем ответы через запятую
+                score: score, // Число баллов (скрипт сам припишет "из 6", или в вашем случае "из 3")
+                grade: grade
+            };
+
+            // 5. Отправляем данные методом POST как JSON-строку
+            fetch(googleScriptUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain' },
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                resultBox.innerHTML = `Вы ответили правильно на ${score} из 3 вопросов. Ваша оценка: <b>${grade}</b>.<br><b style="color: green;">✓ Работа успешно сдана и занесена в журнал!</b>`;
+                btn.innerText = "Отправлено";
+                document.getElementById('reset-quiz-btn').innerText = data.nextBtnText;
+                document.getElementById('reset-quiz-btn').style.display = "inline-block";
+            })
+            .catch(error => {
+                alert("Ошибка сети при отправке данных в таблицу. Попробуйте еще раз.");
+                btn.disabled = false;
+                btn.innerText = "Проверить ответы";
+                console.error(error);
+            });
         }
 
         function nextAttempt() {
@@ -167,7 +252,10 @@
             renderQuiz(currentAttempt);
         }
 
-        renderQuiz(currentAttempt);
+        // Запуск при первой загрузке страницы
+        window.onload = function() {
+            renderQuiz(1);
+        };
     </script>
 
 
