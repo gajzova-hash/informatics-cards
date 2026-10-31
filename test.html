@@ -59,9 +59,8 @@
     <h2>Тест завершен!</h2><div id="result-wrapper"></div><h3 style="margin-top:30px; text-align: left;">Детализация ответов:</h3><div id="answers-review"></div><a href="index.html" class="back-link">← Вернуться к памяткам</a>
 </div>
 <script>
-const googleScriptUrl = "https://google.com";
-
-const variantsDB = {
+const googleScriptUrl = "https://script.google.com/macros/s/AKfycbxzatSf2EwjFd_1NR3ISSqpWgduqMHXsP6JlZv5pX9LHPemdQuJWJDIDY7MTxrC1fHKlg/exec";
+    const variantsDB = {
     1: { tasks:, answers: ["113","216","764","A","B","C"] },
     2: { tasks:, answers: ["123","303","1144","D","E","F"] },
     3: { tasks:, answers: ["100","325","665","1A","1B","1C"] },
@@ -91,7 +90,6 @@ const variantsDB = {
     27: { tasks:, answers: ["122","373","1625","B2","B3","B4"] },
     28: { tasks:, answers: ["103","241","667","B5","B6","B7"] }
 };
-
 let studentData = {}, currentVariant = 1;
 
 document.getElementById('auth-form').addEventListener('submit', function(e) {
@@ -114,13 +112,11 @@ document.getElementById('auth-form').addEventListener('submit', function(e) {
     document.getElementById('test-block').classList.remove('hidden');
 });
 
-  // Автоматическая генерация заданий на основе базы данных вариантов
 function generateTasks(variantId) {
     const tasksData = variantsDB[variantId].tasks;
     const container = document.getElementById('tasks-container');
     container.innerHTML = "";
     
-    // Формируем текст вопросов, подставляя сгенерированные числа
     const taskDescriptions = [
         `1. Переведите число <b>${tasksData[0]}</b> из десятичной системы счисления в восьмеричную.`,
         `2. Переведите число <b>${tasksData[1]}</b> из десятичной системы счисления в восьмеричную.`,
@@ -140,14 +136,12 @@ function generateTasks(variantId) {
     });
 }
 
-// Обработка отправки готового теста
 document.getElementById('test-form').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const submitBtn = document.getElementById('submit-btn');
     const loadingText = document.getElementById('loading-text');
     
-    // Показываем индикатор загрузки
     submitBtn.classList.add('hidden');
     loadingText.style.display = 'block';
     
@@ -156,7 +150,6 @@ document.getElementById('test-form').addEventListener('submit', function(e) {
     let studentAnswers = [];
     let reviewHtml = "";
     
-    // Проверяем ответы ученика
     for (let i = 0; i < 6; i++) {
         let studentAns = document.getElementById(`ans-${i}`).value.trim();
         studentAnswers.push(studentAns);
@@ -171,13 +164,11 @@ document.getElementById('test-form').addEventListener('submit', function(e) {
         `;
     }
     
-    // Выставляем школьную оценку по критериям (6 баллов = '5', 4-5 баллов = '4', 3 балла = '3', меньше = '2')
     let grade = 2;
     if (score === 6) grade = 5;
     else if (score === 5 || score === 4) grade = 4;
     else if (score === 3) grade = 3;
     
-    // Собираем пакет данных для вашей таблицы
     const payload = {
         city: studentData.city,
         school: studentData.school,
@@ -191,11 +182,7 @@ document.getElementById('test-form').addEventListener('submit', function(e) {
         grade: grade
     };
     
-    // Подставляем вашу рабочую ссылку для отправки
-    const targetUrl = "https://script.google.com/macros/s/AKfycbxpX-qP3EEo3LDElxLj01k5xXv8Wi1JV3SDNAZh8O9QPvBjRgW285bOcbIBTm2AZLTHdA/exec";
-    
-    // Отправляем данные в Google Таблицу
-    fetch(targetUrl, {
+    fetch(googleScriptUrl, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain' },
@@ -206,12 +193,11 @@ document.getElementById('test-form').addEventListener('submit', function(e) {
     })
     .catch(error => {
         console.error(error);
-        alert("Произошла ошибка при отправке, но ваши результаты сохранены на экране.");
+        alert("Произошла ошибка при отправке в сеть, но ваши результаты сохранены.");
         showResults(score, grade, reviewHtml);
     });
 });
 
-// Вывод итогов на экран
 function showResults(score, grade, reviewHtml) {
     document.getElementById('test-block').classList.add('hidden');
     document.getElementById('result-block').classList.remove('hidden');
@@ -230,3 +216,4 @@ function showResults(score, grade, reviewHtml) {
 </script>
 </body>
 </html>
+
