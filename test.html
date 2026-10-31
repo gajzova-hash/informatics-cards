@@ -55,9 +55,20 @@
     <div class="notice">💡 <b>Напоминание:</b> При переводе в 16-ричную систему счисления остатки от 10 до 15 обязательно записывайте заглавными латинскими буквами: <b>A, B, C, D, E, F</b>.</div>
     <form id="test-form"><div id="tasks-container"></div><button type="submit" id="submit-btn">Сдать работу</button><div class="loader" id="loading-text">Отправка результатов...</div></form>
 </div>
+<!-- Ищите этот блок в HTML -->
 <div class="container hidden" id="result-block" style="text-align: center;">
-    <h2>Тест завершен!</h2><div id="result-wrapper"></div><h3 style="margin-top:30px; text-align: left;">Детализация ответов:</h3><div id="answers-review"></div><a href="index.html" class="back-link">← Вернуться к памяткам</a>
+    <h2>Тест завершен!</h2>
+    <div id="result-wrapper"></div>
+    <h3 style="margin-top:30px; text-align: left;">Детализация ответов:</h3>
+    <div id="answers-review"></div>
+    
+    <!-- ДОБАВЬТЕ ЭТУ КНОПКУ ПРЯМО СЮДА -->
+    <button type="button" onclick="resetTestForNewAttempt()" style="background-color: #3498db; margin-top: 20px;">Пройти тест заново</button>
+    
+    <br>
+    <a href="index.html" class="back-link">← Вернуться к памяткам</a>
 </div>
+
 <script>
 const variantsDB = {
     1: { tasks: [75, 142, 500, 10, 11, 12], answers: ["113","216","764","A","B","C"] },
@@ -133,6 +144,27 @@ document.getElementById('test-form').addEventListener('submit', function(e) {
         document.getElementById('answers-review').innerHTML = reviewHTML; window.scrollTo(0, 0);
     }).catch(error => { alert("Ошибка отправки!"); document.getElementById('submit-btn').disabled = false; document.getElementById('loading-text').style.display = 'none'; });
 });
+// Функция для полной очистки формы и запуска новой попытки
+function resetTestForNewAttempt() {
+    // 1. Очищаем сохраненные данные ученика и выбранный вариант
+    studentData = {};
+    currentVariant = 1;
+    
+    // 2. Сбрасываем текстовые поля формы авторизации
+    document.getElementById('auth-form').reset();
+    
+    // 3. Сбрасываем форму самого теста (очищаем старые ответы в инпутах)
+    document.getElementById('test-form').reset();
+    
+    // 4. Возвращаем видимость кнопке отправки и прячем индикатор загрузки
+    document.getElementById('submit-btn').classList.remove('hidden');
+    document.getElementById('loading-text').style.display = 'none';
+    
+    // 5. Переключаем экраны: показываем вход и прячем результаты
+    document.getElementById('result-block').classList.add('hidden');
+    document.getElementById('test-block').classList.add('hidden');
+    document.getElementById('auth-block').classList.remove('hidden');
+}
 </script>
 </body>
 </html>
