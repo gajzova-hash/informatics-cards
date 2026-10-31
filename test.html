@@ -59,83 +59,174 @@
     <h2>Тест завершен!</h2><div id="result-wrapper"></div><h3 style="margin-top:30px; text-align: left;">Детализация ответов:</h3><div id="answers-review"></div><a href="index.html" class="back-link">← Вернуться к памяткам</a>
 </div>
 <script>
+const googleScriptUrl = "https://google.com";
+
 const variantsDB = {
-    1: { tasks: [75, 142, 500, 10, 11, 12], answers: ["113","216","764","A","B","C"] },
-    2: { tasks: [83, 195, 612, 13, 14, 15], answers: ["123","303","1144","D","E","F"] },
-    3: { tasks: [64, 213, 437, 26, 27, 28], answers: ["100","325","665","1A","1B","1C"] },
-    4: { tasks: [99, 156, 704, 29, 30, 31], answers: ["143","234","1300","1D","1E","1F"] },
-    5: { tasks: [47, 271, 819, 42, 43, 44], answers: ["57","417","1463","2A","2B","2C"] },
-    6: { tasks: [88, 133, 555, 45, 46, 47], answers: ["130","205","1053","2D","2E","2F"] },
-    7: { tasks: [53, 246, 901, 58, 59, 60], answers: ["65","366","1605","3A","3B","3C"] },
-    8: { tasks: [91, 177, 634, 61, 62, 63], answers: ["133","261","1172","3D","3E","3F"] },
-    9: { tasks: [39, 205, 728, 74, 75, 76], answers: ["47","315","1330","4A","4B","4C"] },
-    10: { tasks: [72, 119, 482, 77, 78, 79], answers: ["110","167","742","4D","4E","4F"] },
-    11: { tasks: [69, 183, 527, 90, 91, 92], answers: ["105","267","1017","5A","5B","5C"] },
-    12: { tasks: [81, 260, 804, 93, 94, 95], answers: ["121","404","1444","5D","5E","5F"] },
-    13: { tasks: [57, 149, 689, 106, 107, 108], answers: ["71","225","1261","6A","6B","6C"] },
-    14: { tasks: [94, 227, 415, 109, 110, 111], answers: ["136","343","637","6D","6E","6F"] },
-    15: { tasks: [42, 166, 831, 122, 123, 124], answers: ["52","246","1477","7A","7B","7C"] },
-    16: { tasks: [86, 191, 573, 125, 126, 127], answers: ["126","277","1075","7D","7E","7F"] },
-    17: { tasks: [77, 254, 932, 138, 139, 140], answers: ["115","376","1644","8A","8B","8C"] },
-    18: { tasks: [61, 138, 499, 141, 142, 143], answers: ["75","212","763","8D","8E","8F"] },
-    19: { tasks: [97, 210, 766, 154, 155, 156], answers: ["141","322","1376","9A","9B","9C"] },
-    20: { tasks: [61, 271, 623, 157, 158, 159], answers: ["61","271","1157","9D","9E","9F"] },
-    21: { tasks: [84, 239, 871, 160, 161, 162], answers: ["124","357","1547","A0","A1","A2"] },
-    22: { tasks: [66, 152, 508, 163, 164, 165], answers: ["102","230","774","A3","A4","A5"] },
-    23: { tasks: [73, 199, 715, 166, 167, 168], answers: ["111","307","1313","A6","A7","A8"] },
-    24: { tasks: [55, 222, 844, 169, 170, 171], answers: ["67","336","1514","A9","AA","AB"] },
-    25: { tasks: [90, 147, 659, 172, 173, 174], answers: ["132","223","1223","AC","AD","AE"] },
-    26: { tasks: [38, 173, 590, 175, 176, 177], answers: ["46","255","1116","AF","B0","B1"] },
-    27: { tasks: [82, 251, 917, 178, 179, 180], answers: ["122","373","1625","B2","B3","B4"] },
-    28: { tasks: [67, 161, 439, 181, 182, 183], answers: ["103","241","667","B5","B6","B7"] }
-};let studentData = {}, currentVariant = 1;
+    1: { tasks:, answers: ["113","216","764","A","B","C"] },
+    2: { tasks:, answers: ["123","303","1144","D","E","F"] },
+    3: { tasks:, answers: ["100","325","665","1A","1B","1C"] },
+    4: { tasks:, answers: ["143","234","1300","1D","1E","1F"] },
+    5: { tasks:, answers: ["57","417","1463","2A","2B","2C"] },
+    6: { tasks:, answers: ["130","205","1053","2D","2E","2F"] },
+    7: { tasks:, answers: ["65","366","1605","3A","3B","3C"] },
+    8: { tasks:, answers: ["133","261","1172","3D","3E","3F"] },
+    9: { tasks:, answers: ["47","315","1330","4A","4B","4C"] },
+    10: { tasks:, answers: ["110","167","742","4D","4E","4F"] },
+    11: { tasks:, answers: ["105","267","1017","5A","5B","5C"] },
+    12: { tasks:, answers: ["121","404","1444","5D","5E","5F"] },
+    13: { tasks:, answers: ["71","225","1261","6A","6B","6C"] },
+    14: { tasks:, answers: ["136","343","637","6D","6E","6F"] },
+    15: { tasks:, answers: ["52","246","1477","7A","7B","7C"] },
+    16: { tasks:, answers: ["126","277","1075","7D","7E","7F"] },
+    17: { tasks:, answers: ["115","376","1644","8A","8B","8C"] },
+    18: { tasks:, answers: ["75","212","763","8D","8E","8F"] },
+    19: { tasks:, answers: ["141","322","1376","9A","9B","9C"] },
+    20: { tasks:, answers: ["61","271","1157","9D","9E","9F"] },
+    21: { tasks:, answers: ["124","357","1547","A0","A1","A2"] },
+    22: { tasks:, answers: ["102","230","774","A3","A4","A5"] },
+    23: { tasks:, answers: ["111","307","1313","A6","A7","A8"] },
+    24: { tasks:, answers: ["67","336","1514","A9","AA","AB"] },
+    25: { tasks:, answers: ["132","223","1223","AC","AD","AE"] },
+    26: { tasks:, answers: ["46","255","1116","AF","B0","B1"] },
+    27: { tasks:, answers: ["122","373","1625","B2","B3","B4"] },
+    28: { tasks:, answers: ["103","241","667","B5","B6","B7"] }
+};
+
+let studentData = {}, currentVariant = 1;
+
 document.getElementById('auth-form').addEventListener('submit', function(e) {
     e.preventDefault();
     studentData = {
-        city: document.getElementById('city').value, school: document.getElementById('school').value,
-        classNum: document.getElementById('class-num').value, classLit: document.getElementById('class-lit').value,
-        lastname: document.getElementById('lastname').value, firstname: document.getElementById('firstname').value
+        city: document.getElementById('city').value.trim(), 
+        school: document.getElementById('school').value.trim(),
+        classNum: document.getElementById('class-num').value, 
+        classLit: document.getElementById('class-lit').value.trim(),
+        lastname: document.getElementById('lastname').value.trim(), 
+        firstname: document.getElementById('firstname').value.trim()
     };
+    
     currentVariant = Math.floor(Math.random() * 28) + 1;
+    document.getElementById('variant-title').innerText = "Вариант №" + currentVariant;
+    
+    generateTasks(currentVariant);
+    
     document.getElementById('auth-block').classList.add('hidden');
     document.getElementById('test-block').classList.remove('hidden');
-    document.getElementById('variant-title').innerText = `Вариант №${currentVariant} (Сгенерирован автоматически)`;
-    buildTest(currentVariant);
 });
-function buildTest(vNum) {
-    const varData = variantsDB[vNum]; const container = document.getElementById('tasks-container'); container.innerHTML = '';
-    for(let i=0; i<3; i++) {
-        container.innerHTML += `<div class="task"><label><b>Задание ${i+1}.</b> Переведите число <b>${varData.tasks[i]}<sub>10</sub></b> в 8-ричную систему:</label><input type="text" class="student-ans" data-index="${i}" placeholder="Ответ..." required autocomplete="off"></div>`;
-    }
-    for(let i=3; i<6; i++) {
-        container.innerHTML += `<div class="task"><label><b>Задание ${i+1}.</b> Переведите число <b>${varData.tasks[i]}<sub>10</sub></b> в 16-ричную систему:</label><input type="text" class="student-ans" data-index="${i}" placeholder="Ответ..." required autocomplete="off"></div>`;
-    }
-}
-document.getElementById('test-form').addEventListener('submit', function(e) {
-    e.preventDefault(); document.getElementById('submit-btn').disabled = true; document.getElementById('loading-text').style.display = 'block';
-    const inputs = document.querySelectorAll('.student-ans'); let correctCount = 0; const varData = variantsDB[currentVariant];
-    let studentAnswers = [], reviewHTML = '';
-    inputs.forEach(input => {
-        const idx = parseInt(input.getAttribute('data-index')), ans = input.value.trim().toUpperCase(); studentAnswers.push(ans);
-        const systemBase = idx < 3 ? '8' : '16';
-        if (ans === varData.answers[idx]) { correctCount++; reviewHTML += `<div class="review-item review-correct">✅ <b>Задание ${idx+1}:</b> Ваш ответ <b>${ans}</b> — Верно!</div>`; }
-        else { reviewHTML += `<div class="review-item review-wrong">❌ <b>Задание ${idx+1}:</b> Ваш ответ <b>${ans || 'пусто'}</b> — Неверно. (Правильно: ${varData.answers[idx]}<sub>${systemBase}</sub>)</div>`; }
+
+  // Автоматическая генерация заданий на основе базы данных вариантов
+function generateTasks(variantId) {
+    const tasksData = variantsDB[variantId].tasks;
+    const container = document.getElementById('tasks-container');
+    container.innerHTML = "";
+    
+    // Формируем текст вопросов, подставляя сгенерированные числа
+    const taskDescriptions = [
+        `1. Переведите число <b>${tasksData[0]}</b> из десятичной системы счисления в восьмеричную.`,
+        `2. Переведите число <b>${tasksData[1]}</b> из десятичной системы счисления в восьмеричную.`,
+        `3. Переведите число <b>${tasksData[2]}</b> из десятичной системы счисления в восьмеричную.`,
+        `4. Переведите число <b>${tasksData[3]}</b> из десятичной системы счисления в шестнадцатеричную.`,
+        `5. Переведите число <b>${tasksData[4]}</b> из десятичной системы счисления в шестнадцатеричную.`,
+        `6. Переведите число <b>${tasksData[5]}</b> из десятичной системы счисления в шестнадцатеричную.`
+    ];
+    
+    taskDescriptions.forEach((text, index) => {
+        container.innerHTML += `
+            <div class="task">
+                <label>${text}</label>
+                <input type="text" id="ans-${index}" required placeholder="Ваш ответ..." autocomplete="off">
+            </div>
+        `;
     });
-    let grade = 2, gradeText = "Неудовлетворительно", styleClass = "grade-2";
-    if (correctCount >= 5.5) { grade = 5; gradeText = "Отлично"; styleClass = "grade-5"; }
-    else if (correctCount >= 4) { grade = 4; gradeText = "Хорошо"; styleClass = "grade-4"; }
-    else if (correctCount >= 3) { grade = 3; gradeText = "Удовлетворительно"; styleClass = "grade-3"; }
-    const finalReport = { ...studentData, variant: currentVariant, answers: studentAnswers.join(', '), score: correctCount, grade: grade };
-    const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyN_5DOnlf7oW518aje2ev7vMCY-FwTf-xh_BPWpPHy6ShQPrYOW8KG2S7jscM7NwsSkA/exec';
-    fetch(googleScriptUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(finalReport) }).then(() => {
-        document.getElementById('test-block').classList.add('hidden'); document.getElementById('result-block').classList.remove('hidden');
-        document.getElementById('result-wrapper').innerHTML = `<div class="result-box ${styleClass}"><div style="font-size:18px; font-weight:bold; text-transform:uppercase; letter-spacing:1px;">Ваша оценка по ФГОС</div><div class="grade-val">«${grade}»</div><div style="font-size:22px; font-weight:bold; margin-bottom:15px;">${gradeText}</div><div style="font-size:16px; opacity:0.9;">Правильных ответов: <b>${correctCount} из 6</b></div></div><p style="text-align:center; color:#4b5563; font-size:14px; font-style:italic;">Результаты успешно сохранены в таблицу учителя.</p>`;
-        document.getElementById('answers-review').innerHTML = reviewHTML; window.scrollTo(0, 0);
-    }).catch(error => { alert("Ошибка отправки!"); document.getElementById('submit-btn').disabled = false; document.getElementById('loading-text').style.display = 'none'; });
+}
+
+// Обработка отправки готового теста
+document.getElementById('test-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitBtn = document.getElementById('submit-btn');
+    const loadingText = document.getElementById('loading-text');
+    
+    // Показываем индикатор загрузки
+    submitBtn.classList.add('hidden');
+    loadingText.style.display = 'block';
+    
+    const correctAnswers = variantsDB[currentVariant].answers;
+    let score = 0;
+    let studentAnswers = [];
+    let reviewHtml = "";
+    
+    // Проверяем ответы ученика
+    for (let i = 0; i < 6; i++) {
+        let studentAns = document.getElementById(`ans-${i}`).value.trim();
+        studentAnswers.push(studentAns);
+        
+        let isCorrect = studentAns === correctAnswers[i];
+        if (isCorrect) score++;
+        
+        reviewHtml += `
+            <div class="review-item ${isCorrect ? 'review-correct' : 'review-wrong'}">
+                Задание ${i + 1}: Ваш ответ <b>${studentAns || "(пусто)"}</b> — ${isCorrect ? 'Верно' : 'Неверно (Правильный ответ: <b>' + correctAnswers[i] + '</b>)'}
+            </div>
+        `;
+    }
+    
+    // Выставляем школьную оценку по критериям (6 баллов = '5', 4-5 баллов = '4', 3 балла = '3', меньше = '2')
+    let grade = 2;
+    if (score === 6) grade = 5;
+    else if (score === 5 || score === 4) grade = 4;
+    else if (score === 3) grade = 3;
+    
+    // Собираем пакет данных для вашей таблицы
+    const payload = {
+        city: studentData.city,
+        school: studentData.school,
+        classNum: studentData.classNum,
+        classLit: studentData.classLit,
+        lastname: studentData.lastname,
+        firstname: studentData.firstname,
+        variant: currentVariant,
+        answers: studentAnswers.join(", "),
+        score: score,
+        grade: grade
+    };
+    
+    // Подставляем вашу рабочую ссылку для отправки
+    const targetUrl = "https://google.com";
+    
+    // Отправляем данные в Google Таблицу
+    fetch(targetUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(payload)
+    })
+    .then(() => {
+        showResults(score, grade, reviewHtml);
+    })
+    .catch(error => {
+        console.error(error);
+        alert("Произошла ошибка при отправке, но ваши результаты сохранены на экране.");
+        showResults(score, grade, reviewHtml);
+    });
 });
+
+// Вывод итогов на экран
+function showResults(score, grade, reviewHtml) {
+    document.getElementById('test-block').classList.add('hidden');
+    document.getElementById('result-block').classList.remove('hidden');
+    
+    const wrapper = document.getElementById('result-wrapper');
+    wrapper.innerHTML = `
+        <div class="result-box grade-${grade}">
+            <div>Правильных ответов: <b>${score} из 6</b></div>
+            <div class="grade-val">${grade}</div>
+            <div style="font-weight:bold;">Ваша оценка</div>
+        </div>
+    `;
+    
+    document.getElementById('answers-review').innerHTML = reviewHtml;
+}
 </script>
 </body>
 </html>
-
-
-
